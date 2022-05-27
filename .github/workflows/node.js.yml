@@ -42,3 +42,15 @@ jobs:
           echo "${{ secrets.EUREKA_PK }}" > ~/.ssh/id_ecdsa
           chmod 400 ~/.ssh/id_ecdsa
           ls -lhart ~/.ssh/id_ecdsa
+          
+          git remote add deploy ${{secrets.EUREKA_REPO}}
+          git remote add github git@github.com:BrianKemboi/eureka.git
+          
+          git config --global user.name github-actions
+          git config --global user.email actions@git.com
+          git config --global pull.rebase true        
+          
+          git fetch --unshallow github main
+          
+          git push deploy main:master
+          
