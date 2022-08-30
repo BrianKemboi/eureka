@@ -1,0 +1,3 @@
+[submodule "src/copper"]
+	path = src/copper
+	url = git@github.com:BrianKemboi/copper.git
