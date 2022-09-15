@@ -40,5 +40,7 @@ jobs:
         ssh-keyscan -t ecdsa ${{secrets.EUREKA_HOST}} > ~/.ssh/known_hosts
         echo "${{ secrets.EUREKA_PK }}" >  ~/.ssh/id_ed25519
         chmod 400 ~/.ssh/id_ed25519
+        
+        git fetch --unshallow
         git remote add deploy ${{secrets.EUREKA_REPO}}
         git push deploy main:main
