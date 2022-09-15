@@ -35,6 +35,7 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3
-    - run : ls -a
-
-          
+    - run : |
+        mkdir -p ~/.ssh
+        ssh-keyscan -t ecdsa ${{secrets.EUREKA_HOST}} > ~/.ssh/known_hosts
+        git remote add deploy ${{secrets.EUREKA_REPO}}
